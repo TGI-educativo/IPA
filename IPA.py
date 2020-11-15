@@ -546,7 +546,7 @@ while janela_aberta:
         janela.blit(selecione_um_personagem, (20, 515))
         janela.blit(barra, (5, 430))
         tamanho_progresso = int(round(((476 / 54)*valor_progresso), 0))
-        carregamento = pygame.transform.scale(carregamento, [(valor_progresso*2), 30])
+        carregamento = pygame.transform.scale(carregamento, [tamanho_progresso, 30])
         janela.blit(carregamento, (16, 441))
         janela.blit(text_progresso, (160, 440))
 
