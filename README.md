@@ -24,5 +24,5 @@ Público alvo: estudantes de tecnologia, estudantes sem conhecimento prévio em 
 
 Interface/Controles: Setas para movimentação, enter para seleção e início de diálogos,  esc para retornar à tela anterior.
 
-Identidade do jogo: O personagem principal tem como missão buscar o aprendizado de Processamento de Imagens e colocar em prática todo conhecimento através das atividades teóricas e práticas.
+Identidade do jogo: O personagem principal tem como missão buscar o aprendizado de Processamento de Imagens e colocar em prática todo conhecimento através das atividades.
 
