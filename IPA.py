@@ -11,7 +11,7 @@ status_tela_pc = "off"
 feedback_status = "off"
 questionario_status = "off"
 conteudo_status = "on"
-quest_num = 0
+quest_num = 1
 direcao = ""
 velocidade = 10
 mapaAtual = 1
@@ -553,12 +553,13 @@ while janela_aberta:
         janela.blit(selecione_um_personagem, (20, 515))
         janela.blit(barra, (5, 430))
         tamanho_progresso = int(round(((476 / 54)*valor_progresso), 0)) #assim por algum motivo não ta funcionando mais
-        tamanho_progresso = num_pag*100 #assim funciona
         text_progresso = fonte1.render("Progresso: "+str(round((100/54)*num_pag))+"%", True, (255, 165, 0))
 
-
+        carregamento = pygame.transform.scale(carregamento_original, [tamanho_progresso, 30])
         janela.blit(carregamento, (16, 441))
         janela.blit(text_progresso, (160, 440))
+
+
 
         if status_tela_pc == "on":
             if num_pag == 0:
@@ -566,66 +567,65 @@ while janela_aberta:
             if num_pag == 1:
                 num_questionario = 1
                 tela_pc = pagina1
-                carregamento = pygame.transform.scale(carregamento_original, [9, 30])
+
             if num_pag == 2:
                 tela_pc = pagina2
-                carregamento = pygame.transform.scale(carregamento_original, [18, 30])
+
             if num_pag == 3:
                 tela_pc = pagina3
-                carregamento = pygame.transform.scale(carregamento_original, [26, 30])
+
             if num_pag == 4:
                 tela_pc = pagina4
-                carregamento = pygame.transform.scale(carregamento_original, [35, 30])
+
             if num_pag == 5:
                 tela_pc = pagina5
-                carregamento = pygame.transform.scale(carregamento_original, [44, 30])
+
             if num_pag == 6:
                 tela_pc = pagina6
-                carregamento = pygame.transform.scale(carregamento_original, [53, 30])
                 questionario_status = "on"
-                feedback_status = "on"
+                feedback_status = "off"
                 conteudo_status = "off"
 
 
             if num_pag == 7:
                 num_questionario = 2
-                carregamento = pygame.transform.scale(carregamento_original, [62, 30])
+
                 questionario_status = "off"
                 feedback_status = "off"
                 conteudo_status = "on"
                 tela_pc = pagina7
             if num_pag == 8:
                 tela_pc = pagina8
-                carregamento = pygame.transform.scale(carregamento_original, [71, 30])
+
             if num_pag == 9:
                 tela_pc = pagina9
-                carregamento = pygame.transform.scale(carregamento_original, [79, 30])
+
             if num_pag == 10:
                 tela_pc = pagina10
-                carregamento = pygame.transform.scale(carregamento_original, [88, 30])
+
             if num_pag == 11:
                 tela_pc = pagina11
-                carregamento = pygame.transform.scale(carregamento_original, [97, 30])
+
             if num_pag == 12:
                 tela_pc = pagina12
-                carregamento = pygame.transform.scale(carregamento_original, [106, 30])
+
             if num_pag == 13:
                 tela_pc = pagina13
-                carregamento = pygame.transform.scale(carregamento_original, [115, 30])
+
             if num_pag == 14:
                 tela_pc = pagina14
-                carregamento = pygame.transform.scale(carregamento_original, [123, 30])
+
             if num_pag == 15:
                 tela_pc = pagina15
-                carregamento = pygame.transform.scale(carregamento_original, [132, 30])
+
 
             if num_pag == 16:
-                carregamento = pygame.transform.scale(carregamento_original, [141, 30])
+
                 questionario_status = "on"
                 feedback_status = "on"
                 conteudo_status = "off"
             if num_pag == 17:
-                carregamento = pygame.transform.scale(carregamento_original, [150, 30])
+
                 questionario_status = "off"
                 feedback_status = "off"
                 conteudo_status = "on"
@@ -633,27 +633,27 @@ while janela_aberta:
 
 
             if num_pag == 18:
-                carregamento = pygame.transform.scale(carregamento_original, [159, 30])
+
                 num_questionario = 3
                 tela_pc = pagina18
             if num_pag == 19:
                 tela_pc = pagina19
-                carregamento = pygame.transform.scale(carregamento_original, [167, 30])
+
             if num_pag == 20:
                 tela_pc = pagina20
-                carregamento = pygame.transform.scale(carregamento_original, [176, 30])
+
             if num_pag == 21:
                 tela_pc = pagina21
-                carregamento = pygame.transform.scale(carregamento_original, [185, 30])
+
             if num_pag == 22:
                 tela_pc = pagina22
-                carregamento = pygame.transform.scale(carregamento_original, [194, 30])
+
             if num_pag == 23:
                 tela_pc = pagina23
-                carregamento = pygame.transform.scale(carregamento_original, [203, 30])
+
             if num_pag == 24:
                 tela_pc = pagina24
-                carregamento = pygame.transform.scale(carregamento_original, [212, 30])
+
 
 
 
@@ -661,112 +661,112 @@ while janela_aberta:
                 questionario_status = "on"
                 feedback_status = "on"
                 conteudo_status = "off"
-                carregamento = pygame.transform.scale(carregamento_original, [220, 30])
+
 
             if num_pag == 26:
                 questionario_status = "off"
                 feedback_status = "off"
                 conteudo_status = "on"
                 num_pag = 27
-                carregamento = pygame.transform.scale(carregamento_original, [229, 30])
+
 
             if num_pag == 27:
                 num_questionario = 4
                 tela_pc = pagina25
-                carregamento = pygame.transform.scale(carregamento_original, [238, 30])
+
             if num_pag == 28:
                 tela_pc = pagina26
-                carregamento = pygame.transform.scale(carregamento_original, [247, 30])
+
             if num_pag == 29:
                 tela_pc = pagina27
-                carregamento = pygame.transform.scale(carregamento_original, [256, 30])
+
             if num_pag == 30:
                 tela_pc = pagina28
-                carregamento = pygame.transform.scale(carregamento_original, [256, 30])
+
             if num_pag == 31:
                 tela_pc = pagina29
-                carregamento = pygame.transform.scale(carregamento_original, [273, 30])
+
             if num_pag == 32:
                 tela_pc = pagina30
-                carregamento = pygame.transform.scale(carregamento_original, [282, 30])
+
             if num_pag == 33:
                 tela_pc = pagina31
-                carregamento = pygame.transform.scale(carregamento_original, [291, 30])
+
             if num_pag == 34:
                 tela_pc = pagina32
-                carregamento = pygame.transform.scale(carregamento_original, [300, 30])
+
             if num_pag == 35:
                 tela_pc = pagina33
-                carregamento = pygame.transform.scale(carregamento_original, [309, 30])
+
             if num_pag == 36:
                 tela_pc = pagina34
-                carregamento = pygame.transform.scale(carregamento_original, [317, 30])
+
             if num_pag == 37:
                 tela_pc = pagina35
-                carregamento = pygame.transform.scale(carregamento_original, [326, 30])
+
             if num_pag == 38:
                 tela_pc = pagina36
-                carregamento = pygame.transform.scale(carregamento_original, [335, 30])
+
             if num_pag == 39:
                 tela_pc = pagina37
-                carregamento = pygame.transform.scale(carregamento_original, [344, 30])
+
             if num_pag == 40:
                 tela_pc = pagina38
-                carregamento = pygame.transform.scale(carregamento_original, [353, 30])
+
             if num_pag == 41:
                 tela_pc = pagina39
-                carregamento = pygame.transform.scale(carregamento_original, [361, 30])
+
             if num_pag == 42:
                 tela_pc = pagina40
-                carregamento = pygame.transform.scale(carregamento_original, [370, 30])
+
             if num_pag == 43:
                 tela_pc = pagina41
-                carregamento = pygame.transform.scale(carregamento_original, [379, 30])
+
 
 
             if num_pag == 44:
                 questionario_status = "on"
                 feedback_status = "on"
                 conteudo_status = "off"
-                carregamento = pygame.transform.scale(carregamento_original, [388, 30])
+
 
             if num_pag == 45:
                 questionario_status = "off"
                 feedback_status = "off"
                 conteudo_status = "on"
                 num_pag = 46
-                carregamento = pygame.transform.scale(carregamento_original, [397, 30])
+
 
             if num_pag == 46:
                 num_questionario = 5
                 tela_pc = pagina42
-                carregamento = pygame.transform.scale(carregamento_original, [405, 30])
+
             if num_pag == 47:
                 tela_pc = pagina43
-                carregamento = pygame.transform.scale(carregamento_original, [414, 30])
+
             if num_pag == 48:
                 tela_pc = pagina44
-                carregamento = pygame.transform.scale(carregamento_original, [423, 30])
+
             if num_pag == 49:
                 tela_pc = pagina45
-                carregamento = pygame.transform.scale(carregamento_original, [432, 30])
+
             if num_pag == 50:
                 tela_pc = pagina46
-                carregamento = pygame.transform.scale(carregamento_original, [441, 30])
+
             if num_pag == 51:
                 tela_pc = pagina47
-                carregamento = pygame.transform.scale(carregamento_original, [450, 30])
+
             if num_pag == 52:
                 tela_pc = pagina48
-                carregamento = pygame.transform.scale(carregamento_original, [458, 30])
+
             if num_pag == 53:
                 tela_pc = pagina49
-                carregamento = pygame.transform.scale(carregamento_original, [467, 30])
+
             if num_pag == 54:
                 questionario_status = "on"
                 feedback_status = "on"
                 conteudo_status = "off"
-                carregamento = pygame.transform.scale(carregamento_original, [476, 30])
+
 
 
             if feedback_status == "on":
@@ -801,7 +801,28 @@ while janela_aberta:
                     conteudo_status = "off"
 
             if questionario_status == "on":
-                teste = "teste"
+                if quest_num == 1:
+                    tela_pc = questao1
+                if quest_num == 2:
+                    tela_pc = questao2
+                if quest_num == 3:
+                    tela_pc = questao3
+                if quest_num == 4:
+                    tela_pc = questao4
+                if quest_num == 5:
+                    tela_pc = questao5
+                if quest_num == 6:
+                    tela_pc = questao6
+                if quest_num == 7:
+                    tela_pc = questao7
+                if quest_num == 8:
+                    tela_pc = questao8
+                if quest_num == 9:
+                    tela_pc = feedback_1_1
+                    questionario_status = "off"
+                    feedback_status = "on"
+                    conteudo_status = "off"
+
 
             janela.blit(tela_pc, (0, 0))
             if feedback_status == "on":
