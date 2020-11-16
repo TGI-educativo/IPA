@@ -144,6 +144,7 @@ feedback_4_3 = pygame.image.load('graphics/feedback_4-3.PNG')
 feedback_5_1 = pygame.image.load('graphics/feedback_5-1.PNG')
 feedback_5_2 = pygame.image.load('graphics/feedback_5-2.PNG')
 feedback_5_3 = pygame.image.load('graphics/feedback_5-3.PNG')
+tipo_alternativa = 1
 
 valor_progresso = 0
 
@@ -395,8 +396,10 @@ while janela_aberta:
                     select_y -= 40
                 elif modo_select == 2:
                     select_y -= 120
-                elif modo_select == 3:
-                    select_y -= 41
+                elif modo_select == 3 and tipo_alternativa == 1:
+                    select_y -= 30
+                elif modo_select == 3 and tipo_alternativa == 2:
+                    select_y -= 110
         if comandos[pygame.K_DOWN]:
             direcao = "baixo"
             if (metodoBloqueioMovimento(mapaAtual, direcao)):
@@ -405,8 +408,10 @@ while janela_aberta:
                     select_y += 40
                 elif modo_select == 2:
                     select_y += 120
-                elif modo_select == 3:
-                    select_y+= 41
+                elif modo_select == 3 and tipo_alternativa == 1:
+                    select_y += 30
+                elif modo_select == 3 and tipo_alternativa == 2:
+                    select_y += 110
 
         if comandos[pygame.K_SPACE]:
             if item_select == 3 and modo_select == 1:
@@ -424,8 +429,13 @@ while janela_aberta:
             elif modo_select == 2:
                 status_tela_pc = "on"
                 modo_select = 3
-                select_y = 170
+                select_y = 190
                 select_x = 72
+            if modo_select == 3 and tipo_alternativa == 2:
+                item_select = 1
+                select_y = 120
+                select_x = 55
+
             elif modo_select == 3:
                 if feedback_status != "on" and questionario_status != "on":
                     num_pag += 1
@@ -803,8 +813,10 @@ while janela_aberta:
             if questionario_status == "on":
                 if quest_num == 1:
                     tela_pc = questao1
+                    tipo_alternativa = 1
                 if quest_num == 2:
                     tela_pc = questao2
+                    tipo_alternativa = 2
                 if quest_num == 3:
                     tela_pc = questao3
                 if quest_num == 4:
