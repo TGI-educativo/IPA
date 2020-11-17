@@ -941,8 +941,8 @@ while janela_aberta:
         janela.blit(personagem, (x, y))
         #janela.blit(personagem, (320,30)) #personagem exemplo posição
 
-    posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y) + "pagina atual:" + str(num_pag)), True, (255, 255, 255)) #posição do personagem
-    janela.blit(posicao_real, (10,10))
+    #posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y) + "pagina atual:" + str(num_pag)), True, (255, 255, 255)) #posição do personagem
+    #janela.blit(posicao_real, (10,10))
 
     #pygame.draw.circle(janela, (0,255,0), (100,380),10)
 
