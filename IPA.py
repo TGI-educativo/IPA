@@ -17,7 +17,7 @@ velocidade = 10
 mapaAtual = 1
 mapaAnterior = 0
 num_questionario = 1
-feed_num = 0
+feed_num = 1
 timer = 0
 horas = 0
 minutos = 0
@@ -70,7 +70,7 @@ tela_pc = pygame.image.load('graphics/tela_pc.PNG')
 tela_pc = pygame.transform.scale(tela_pc, [900,543])
 labirinto = pygame.image.load('graphics/labirinto.PNG')
 mapa6 =  pygame.image.load('graphics/mapa_6.PNG')
-num_pag = 0
+num_pag = -1
 resposta_selecionada = ""
 pagina_introducao = pygame.image.load('graphics/introducao_conteudo.PNG')
 pagina1 = pygame.image.load('graphics/1-1.PNG')
@@ -131,11 +131,11 @@ questao5 = pygame.image.load('graphics/questao5.PNG')
 questao6 = pygame.image.load('graphics/questao6.PNG')
 questao7 = pygame.image.load('graphics/questao7.PNG')
 questao8 = pygame.image.load('graphics/questao8.PNG')
-questao9 = pygame.image.load('graphics/questao1.PNG')
-questao10 = pygame.image.load('graphics/questao2.PNG')
-questao11 = pygame.image.load('graphics/questao3.PNG')
-questao12 = pygame.image.load('graphics/questao4.PNG')
-questao13 = pygame.image.load('graphics/questao5.PNG')
+questao9 = pygame.image.load('graphics/questao9.PNG')
+questao10 = pygame.image.load('graphics/questao10.PNG')
+questao11 = pygame.image.load('graphics/questao11.PNG')
+questao12 = pygame.image.load('graphics/questao12.PNG')
+questao13 = pygame.image.load('graphics/questao13.PNG')
 questao14 = pygame.image.load('graphics/questao6.PNG')
 questao15 = pygame.image.load('graphics/questao7.PNG')
 questao16 = pygame.image.load('graphics/questao8.PNG')
@@ -194,7 +194,7 @@ pygame.display.set_caption("IPA - Image Processing Adventure")
 janela.blit(capa_ipa, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(1) #original 4000
+pygame.time.delay(4000) #original 4000
 
 janela.blit(instructions_box, (0,0))
 modo_tela += 1
@@ -205,39 +205,11 @@ janela.blit(mapa1, (0,0))
 janela.blit(player_infobox, (150,50))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(1)#8000
+pygame.time.delay(8000)#8000
 
 mapa_att = mapa1
-respostas_corretas = [[1,'c'],
-[2,'b'],
-[3,'d'],
-[4,'d'],
-[5,'c'],
-[6,'b'],
-[7,'c'],
-[8,'a'],
-[9,'a'],
-[10,'d'],
-[11,'a'],
-[12,'c'],
-[13,'a'],
-[14,'c'],
-[15,'d'],
-[16,'b'],
-[17,'c'],
-[18,'a'],
-[19,'b'],
-[20,'a'],
-[21,'b'],
-[22,'a'],
-[23,'d'],
-[24,'a'],
-[25,'b'],
-[26,'c'],
-[27,'a'],
-[28,'d'],
-[29,'d'],
-[30,'c']]
+respostas = ["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x"]
+respostas_corretas = ['b','c','b','d','c','b','d','d','a','c','d','b','a','c','d','b','c','a','b','a','b','a','d','a','b','c','a','d','d','c']
 
 
 
@@ -467,8 +439,12 @@ while janela_aberta:
                 item_select = 1
                 select_y = 120
                 select_x = 55
+            if modo_select == 3 and tipo_alternativa == 2:
+                item_select = 1
+                select_y = 190
+                select_x = 72
 
-            elif modo_select == 3:
+            if modo_select == 3:
                 if feedback_status != "on" and questionario_status != "on":
                     num_pag += 1
                     valor_progresso = valor_progresso +1
@@ -479,41 +455,41 @@ while janela_aberta:
                     quest_num += 1
 
 
-                if feedback_status == "on":
+                elif feedback_status == "on":
                     feed_num += 1
                     if num_questionario == 1:
                         if feed_num > 1:
                             feed_num = 2
-                            num_pag = 7
-                            feedback_status == "off"
+                            num_pag = 8
+                            feedback_status = "off"
                             questionario_status = "off"
                     if num_questionario == 2:
                         if feed_num > 4:
                             feed_num = 5
-                            num_pag = 17
-                            feedback_status == "off"
+                            num_pag = 18
+                            feedback_status = "off"
                             questionario_status = "off"
                     if num_questionario == 3:
                         if feed_num > 7:
                             feed_num = 8
-                            num_pag = 26
-                            feedback_status == "off"
+                            num_pag = 27
+                            feedback_status = "off"
                             questionario_status = "off"
                     if num_questionario == 4:
                         if feed_num > 10:
                             feed_num = 11
-                            num_pag = 45
-                            feedback_status == "off"
+                            num_pag = 46
+                            feedback_status = "off"
                             questionario_status = "off"
                     if num_questionario == 5:
                         if feed_num > 13:
                             feed_num = 14
-                            feedback_status == "off"
+                            feedback_status = "off"
                             questionario_status = "off"
-                            status_tela_pc == "off"
+                            status_tela_pc = "off"
 
 
-                if num_pag > 54:
+                if num_pag > 55:
                     modo_select = 2
                     status_tela_pc = "off"
                     num_pag = 1
@@ -594,8 +570,12 @@ while janela_aberta:
         janela.blit(infobox, (0,490))
         janela.blit(selecione_um_personagem, (20, 515))
         janela.blit(barra, (5, 430))
-        tamanho_progresso = int(round(((476 / 54)*valor_progresso), 0)) #assim por algum motivo não ta funcionando mais
-        text_progresso = fonte1.render("Progresso: "+str(round((100/54)*num_pag))+"%", True, (255, 165, 0))
+        if num_pag == -1:
+            tamanho_progresso = int(round(((476 / 54) * 0), 0))  # assim por algum motivo não ta funcionando mais
+            text_progresso = fonte1.render("Progresso: 0%", True, (255, 165, 0))
+        else:
+            tamanho_progresso = int(round(((476 / 54)*valor_progresso), 0)) #assim por algum motivo não ta funcionando mais
+            text_progresso = fonte1.render("Progresso: "+str(round((100/54)*num_pag))+"%", True, (255, 165, 0))
 
         carregamento = pygame.transform.scale(carregamento_original, [tamanho_progresso, 30])
         janela.blit(carregamento, (16, 441))
@@ -604,212 +584,219 @@ while janela_aberta:
 
 
         if status_tela_pc == "on":
-            if num_pag == 0:
-                tela_pc = pagina_introducao
-            if num_pag == 1:
-                num_questionario = 1
-                tela_pc = pagina1
+            if feedback_status != "on" and questionario_status != "on":
+                if num_pag == 0:
+                    tela_pc = pagina_introducao
+                if num_pag == 1:
+                    num_questionario = 1
+                    tela_pc = pagina1
 
-            if num_pag == 2:
-                tela_pc = pagina2
+                if num_pag == 2:
+                    tela_pc = pagina2
 
-            if num_pag == 3:
-                tela_pc = pagina3
+                if num_pag == 3:
+                    tela_pc = pagina3
 
-            if num_pag == 4:
-                tela_pc = pagina4
+                if num_pag == 4:
+                    tela_pc = pagina4
 
-            if num_pag == 5:
-                tela_pc = pagina5
+                if num_pag == 5:
+                    tela_pc = pagina5
 
-            if num_pag == 6:
-                tela_pc = pagina6
-                questionario_status = "on"
-                feedback_status = "off"
-                conteudo_status = "off"
+                if num_pag == 6:
+                    tela_pc = pagina6
 
+                if num_pag == 7:
 
-            if num_pag == 7:
-                num_questionario = 2
+                    questionario_status = "on"
+                    feedback_status = "off"
+                    conteudo_status = "off"
+                    num_pag = 8
 
-                questionario_status = "off"
-                feedback_status = "off"
-                conteudo_status = "on"
-                tela_pc = pagina7
-            if num_pag == 8:
-                tela_pc = pagina8
+                elif num_pag == 8:
+                    num_questionario = 2
+                    questionario_status = "off"
+                    feedback_status = "off"
+                    conteudo_status = "on"
+                    tela_pc = pagina7
 
-            if num_pag == 9:
-                tela_pc = pagina9
+                if num_pag == 9:
 
-            if num_pag == 10:
-                tela_pc = pagina10
+                    questionario_status = "off"
+                    feedback_status = "off"
+                    conteudo_status = "on"
+                    tela_pc = pagina8
 
-            if num_pag == 11:
-                tela_pc = pagina11
+                if num_pag == 10:
+                    tela_pc = pagina9
 
-            if num_pag == 12:
-                tela_pc = pagina12
+                if num_pag == 11:
+                    tela_pc = pagina10
 
-            if num_pag == 13:
-                tela_pc = pagina13
+                if num_pag == 12:
+                    tela_pc = pagina11
 
-            if num_pag == 14:
-                tela_pc = pagina14
+                if num_pag == 13:
+                    tela_pc = pagina12
 
-            if num_pag == 15:
-                tela_pc = pagina15
+                if num_pag == 14:
+                    tela_pc = pagina13
 
+                if num_pag == 15:
+                    tela_pc = pagina14
 
-            if num_pag == 16:
+                if num_pag == 16:
+                    tela_pc = pagina15
 
-                questionario_status = "on"
-                feedback_status = "on"
-                conteudo_status = "off"
-            if num_pag == 17:
+                if num_pag == 17:
 
-                questionario_status = "off"
-                feedback_status = "off"
-                conteudo_status = "on"
-                num_pag = 18
+                    questionario_status = "on"
+                    feedback_status = "off"
+                    conteudo_status = "off"
+                if num_pag == 18:
 
+                    questionario_status = "off"
+                    feedback_status = "off"
+                    conteudo_status = "on"
+                    num_pag = 19
 
-            if num_pag == 18:
 
-                num_questionario = 3
-                tela_pc = pagina18
-            if num_pag == 19:
-                tela_pc = pagina19
+                elif num_pag == 19:
 
-            if num_pag == 20:
-                tela_pc = pagina20
+                    num_questionario = 3
+                    tela_pc = pagina18
+                if num_pag == 20:
+                    tela_pc = pagina19
 
-            if num_pag == 21:
-                tela_pc = pagina21
+                if num_pag == 21:
+                    tela_pc = pagina20
 
-            if num_pag == 22:
-                tela_pc = pagina22
+                if num_pag == 22:
+                    tela_pc = pagina21
 
-            if num_pag == 23:
-                tela_pc = pagina23
+                if num_pag == 23:
+                    tela_pc = pagina22
 
-            if num_pag == 24:
-                tela_pc = pagina24
+                if num_pag == 24:
+                    tela_pc = pagina23
 
+                if num_pag == 25:
+                    tela_pc = pagina24
 
+                if num_pag == 26:
+                    questionario_status = "on"
+                    feedback_status = "off"
+                    conteudo_status = "off"
 
+                if num_pag == 27:
+                    questionario_status = "off"
+                    feedback_status = "off"
+                    conteudo_status = "on"
+                    num_pag = 28
 
-            if num_pag == 25:
-                questionario_status = "on"
-                feedback_status = "on"
-                conteudo_status = "off"
 
+                elif num_pag == 28:
+                    num_questionario = 4
+                    tela_pc = pagina25
 
-            if num_pag == 26:
-                questionario_status = "off"
-                feedback_status = "off"
-                conteudo_status = "on"
-                num_pag = 27
+                if num_pag == 29:
+                    tela_pc = pagina26
 
+                if num_pag == 30:
+                    tela_pc = pagina27
 
-            if num_pag == 27:
-                num_questionario = 4
-                tela_pc = pagina25
+                if num_pag == 31:
+                    tela_pc = pagina28
 
-            if num_pag == 28:
-                tela_pc = pagina26
+                if num_pag == 32:
+                    tela_pc = pagina29
 
-            if num_pag == 29:
-                tela_pc = pagina27
+                if num_pag == 33:
+                    tela_pc = pagina30
 
-            if num_pag == 30:
-                tela_pc = pagina28
+                if num_pag == 34:
+                    tela_pc = pagina31
 
-            if num_pag == 31:
-                tela_pc = pagina29
+                if num_pag == 35:
+                    tela_pc = pagina32
 
-            if num_pag == 32:
-                tela_pc = pagina30
+                if num_pag == 36:
+                    tela_pc = pagina33
 
-            if num_pag == 33:
-                tela_pc = pagina31
+                if num_pag == 37:
+                    tela_pc = pagina34
 
-            if num_pag == 34:
-                tela_pc = pagina32
+                if num_pag == 38:
+                    tela_pc = pagina35
 
-            if num_pag == 35:
-                tela_pc = pagina33
+                if num_pag == 39:
+                    tela_pc = pagina36
 
-            if num_pag == 36:
-                tela_pc = pagina34
+                if num_pag == 40:
+                    tela_pc = pagina37
 
-            if num_pag == 37:
-                tela_pc = pagina35
+                if num_pag == 41:
+                    tela_pc = pagina38
 
-            if num_pag == 38:
-                tela_pc = pagina36
+                if num_pag == 42:
+                    tela_pc = pagina39
 
-            if num_pag == 39:
-                tela_pc = pagina37
+                if num_pag == 43:
+                    tela_pc = pagina40
 
-            if num_pag == 40:
-                tela_pc = pagina38
+                if num_pag == 44:
+                    tela_pc = pagina41
 
-            if num_pag == 41:
-                tela_pc = pagina39
+                if num_pag == 45:
+                    questionario_status = "on"
+                    feedback_status = "off"
+                    conteudo_status = "off"
 
-            if num_pag == 42:
-                tela_pc = pagina40
+                if num_pag == 46:
+                    questionario_status = "off"
+                    feedback_status = "off"
+                    conteudo_status = "on"
+                    num_pag = 47
 
-            if num_pag == 43:
-                tela_pc = pagina41
 
+                elif num_pag == 47:
+                    num_questionario = 5
+                    tela_pc = pagina42
 
+                if num_pag == 48:
+                    tela_pc = pagina43
 
-            if num_pag == 44:
-                questionario_status = "on"
-                feedback_status = "on"
-                conteudo_status = "off"
+                if num_pag == 49:
+                    tela_pc = pagina44
 
+                if num_pag == 50:
+                    tela_pc = pagina45
 
-            if num_pag == 45:
-                questionario_status = "off"
-                feedback_status = "off"
-                conteudo_status = "on"
-                num_pag = 46
+                if num_pag == 51:
+                    tela_pc = pagina46
 
+                if num_pag == 52:
+                    tela_pc = pagina47
 
-            if num_pag == 46:
-                num_questionario = 5
-                tela_pc = pagina42
+                if num_pag == 53:
+                    tela_pc = pagina48
 
-            if num_pag == 47:
-                tela_pc = pagina43
+                if num_pag == 54:
+                    tela_pc = pagina49
 
-            if num_pag == 48:
-                tela_pc = pagina44
+                if num_pag == 55:
+                    questionario_status = "on"
+                    feedback_status = "off"
+                    conteudo_status = "off"
 
-            if num_pag == 49:
-                tela_pc = pagina45
-
-            if num_pag == 50:
-                tela_pc = pagina46
-
-            if num_pag == 51:
-                tela_pc = pagina47
-
-            if num_pag == 52:
-                tela_pc = pagina48
-
-            if num_pag == 53:
-                tela_pc = pagina49
-
-            if num_pag == 54:
-                questionario_status = "on"
-                feedback_status = "on"
-                conteudo_status = "off"
-
-
+            if item_select == 1:
+                resposta = "a"
+            elif item_select == 2:
+                resposta = "b"
+            elif item_select == 3:
+                resposta = "c"
+            elif item_select == 4:
+                resposta = "d"
 
             if feedback_status == "on":
                 if feed_num == 1:
@@ -842,34 +829,142 @@ while janela_aberta:
                     feedback_status = "on"
                     conteudo_status = "off"
 
-            if questionario_status == "on":
+
+
+            elif questionario_status == "on":
                 if quest_num == 1:
                     tela_pc = questao1
                     tipo_alternativa = 1
-                if quest_num == 2:
+                    respostas[0] = resposta
+
+                elif quest_num == 2:
                     tela_pc = questao2
                     tipo_alternativa = 2
-                if quest_num == 3:
+                    respostas[1] = resposta
+                elif quest_num == 3:
                     tela_pc = questao3
-                if quest_num == 4:
+                    tipo_alternativa = 1
+                    respostas[2] = resposta
+                elif quest_num == 4:
                     tela_pc = questao4
-                if quest_num == 5:
+                    tipo_alternativa = 2
+                    respostas[3] = resposta
+
+                elif quest_num == 5:
                     tela_pc = questao5
-                if quest_num == 6:
+                    tipo_alternativa = 1
+                    respostas[4] = resposta
+                elif quest_num == 6:
                     tela_pc = questao6
-                if quest_num == 7:
+                    tipo_alternativa = 1
+                    respostas[5] = resposta
+                elif quest_num == 7:
                     tela_pc = questao7
-                if quest_num == 8:
+                    tipo_alternativa = 1
+                    respostas[6] = resposta
+                elif quest_num == 8:
                     tela_pc = questao8
-                if quest_num == 9:
+                    tipo_alternativa = 1
+                    respostas[7] = resposta
+                elif quest_num == 9:
+                    quest_num = 10
                     tela_pc = feedback_1_1
+                    questionario_status = "off"
+                    feedback_status = "on"
+                    conteudo_status = "off"
+                elif quest_num == 10:
+                    tela_pc = questao9
+                    tipo_alternativa = 2
+                    respostas[8] = resposta
+                elif quest_num == 11:
+                    tela_pc = questao10
+                    tipo_alternativa = 1
+                    respostas[9] = resposta
+                elif quest_num == 12:
+                    tela_pc = questao11
+                    tipo_alternativa = 1
+                    respostas[10] = resposta
+                elif quest_num == 13:
+                    tela_pc = questao12
+                    tipo_alternativa = 1
+                    respostas[11] = resposta
+                elif quest_num == 14:
+                    tela_pc = questao13
+                    tipo_alternativa = 1
+                    respostas[12] = resposta
+                elif quest_num == 15:
+                    feed_num = 2
+                    tela_pc = feedback_2_1
+                    questionario_status = "off"
+                    feedback_status = "on"
+                    conteudo_status = "off"
+
+                elif quest_num == 16:
+                    tela_pc = questao1
+                    tipo_alternativa = 1
+                    respostas[0] = resposta
+
+                elif quest_num == 17:
+                    tela_pc = questao2
+                    tipo_alternativa = 2
+                    respostas[1] = resposta
+
+                elif quest_num == 18:
+                    tela_pc = questao3
+                    tipo_alternativa = 1
+                    respostas[2] = resposta
+
+                elif quest_num == 19:
+                    tela_pc = questao4
+                    tipo_alternativa = 2
+                    respostas[3] = resposta
+
+                elif quest_num == 20:
+                    tela_pc = questao5
+                    tipo_alternativa = 1
+                    respostas[4] = resposta
+
+                elif quest_num == 21:
+                    tela_pc = feedback_3_1
                     questionario_status = "off"
                     feedback_status = "on"
                     conteudo_status = "off"
 
 
+
+            if tipo_alternativa == 1 and item_select == 1:
+                select_y = 190
+                select_x = 72
+            if tipo_alternativa == 1 and item_select == 2:
+                select_y = 220
+                select_x = 72
+            if tipo_alternativa == 1 and item_select == 3:
+                select_y = 250
+                select_x = 72
+            if tipo_alternativa == 1 and item_select == 4:
+                select_y = 280
+                select_x = 72
+            if tipo_alternativa == 2 and item_select == 1:
+                select_y = 120
+                select_x = 55
+            if tipo_alternativa == 2 and item_select == 2:
+                select_y = 120
+                select_x = 273
+            if tipo_alternativa == 2 and item_select == 3:
+                select_y = 230
+                select_x = 55
+            if tipo_alternativa == 2 and item_select == 4:
+                select_y = 230
+                select_x = 273
+
             janela.blit(tela_pc, (0, 0))
             if feedback_status == "on":
+                if num_questionario == 1:
+                    txt = fonte2.render(str(8), True, (0, 0, 0))
+                    janela.blit(txt, (255, 82))
+                else:
+                    txt = fonte2.render(str(5), True, (0, 0, 0))
+                    janela.blit(txt, (255, 82))
                 txt = fonte2.render(str(questoes_corretas_atual), True, (0, 0, 0))
                 janela.blit(txt, (245, 101))
                 txt = fonte2.render(str(100*questoes_corretas_atual), True, (0, 0, 0))
@@ -929,6 +1024,23 @@ while janela_aberta:
         janela.blit(provas_feitas_txt, (350, 410))
         janela.blit(relogio, (350, 480))
 
+    if num_questionario == 1:
+        questoes_corretas_atual = 0
+
+        for i in range(8):
+            if respostas_corretas[i] == respostas[i]:
+                questoes_corretas_atual += 1
+                questoes_corretas_total += 1
+
+
+    if num_questionario == 2:
+
+        questoes_corretas_atual = 0
+
+        for i in range(8,13):
+            if respostas_corretas[i] == respostas[i]:
+                questoes_corretas_atual += 1
+                questoes_corretas_total += 1
 
 
 
@@ -941,7 +1053,9 @@ while janela_aberta:
         janela.blit(personagem, (x, y))
         #janela.blit(personagem, (320,30)) #personagem exemplo posição
 
-    #posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y) + "pagina atual:" + str(num_pag)), True, (255, 255, 255)) #posição do personagem
+
+
+    #posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y) + "pagina atual:" + str(feed_num)), True, (255, 255, 255)) #posição do personagem
     #janela.blit(posicao_real, (10,10))
 
     #pygame.draw.circle(janela, (0,255,0), (100,380),10)
