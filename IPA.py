@@ -785,9 +785,10 @@ while janela_aberta:
                     tela_pc = pagina49
 
                 if num_pag == 55:
-                    questionario_status = "on"
+                    questionario_status = "off"
                     feedback_status = "off"
                     conteudo_status = "off"
+                    modo_select = 2
 
             if item_select == 1:
                 resposta = "a"
