@@ -22,10 +22,10 @@ timer = 0
 horas = 0
 minutos = 0
 segundos = 0
-nivel_jogador = 1
+nivel_jogador = "Iniciante" #alterado
 exp_jogador = 0
 exp_total = 0
-nivel_conteudo = 1
+nivel_conteudo = 0 #alterado
 questoes_respondidas = 0
 questoes_corretas_total = 0
 questoes_corretas_atual = 0
@@ -566,16 +566,21 @@ while janela_aberta:
         else:
             selecione_um_personagem = fonte1.render("Use a tecla 'espaço' para interagir", True, (255, 255, 255))
 
-
-        janela.blit(infobox, (0,490))
+        janela.blit(infobox, (0, 490))
         janela.blit(selecione_um_personagem, (20, 515))
         janela.blit(barra, (5, 430))
         if num_pag == -1:
-            tamanho_progresso = int(round(((476 / 55) * 0), 0))  # assim por algum motivo não ta funcionando mais
+            tamanho_progresso = int(round(((476 / 55) * 0), 0))
             text_progresso = fonte1.render("Progresso: 0%", True, (255, 165, 0))
         else:
-            tamanho_progresso = int(round(((476 / 55)*valor_progresso), 0)) #assim por algum motivo não ta funcionando mais
-            text_progresso = fonte1.render("Progresso: "+str(round((100/54)*num_pag))+"%", True, (255, 165, 0))
+            tamanho_progresso = int(round(((476 / 55) * valor_progresso), 0))
+            text_progresso = fonte1.render("Progresso: " + str(round((100 / 55) * valor_progresso)) + "%", True,
+                                           (255, 165, 0))
+            # alterado
+        if tamanho_progresso > 476:
+            tamanho_progresso = int(round(((476 / 55) * 55), 0))
+            text_progresso = fonte1.render("Progresso: " + str(round((100 / 55) * 55)) + "%", True,
+                                           (255, 165, 0))
 
         carregamento = pygame.transform.scale(carregamento_original, [tamanho_progresso, 30])
         janela.blit(carregamento, (16, 441))
@@ -665,6 +670,8 @@ while janela_aberta:
 
                     num_questionario = 3
                     tela_pc = pagina18
+                    nivel_jogador = "Intermediário" #alterado
+
                 if num_pag == 20:
                     tela_pc = pagina19
 
@@ -762,9 +769,11 @@ while janela_aberta:
                 elif num_pag == 47:
                     num_questionario = 5
                     tela_pc = pagina42
+                    nivel_jogador = "Avançado" #alterado
 
                 if num_pag == 48:
                     tela_pc = pagina43
+
 
                 if num_pag == 49:
                     tela_pc = pagina44
@@ -808,6 +817,7 @@ while janela_aberta:
                     tela_pc = feedback_2_2
                 if feed_num == 4:
                     tela_pc = feedback_2_3
+
                 if feed_num == 5:
                     tela_pc = feedback_3_1
                 if feed_num == 6:
@@ -1012,6 +1022,7 @@ while janela_aberta:
     relogio = fonte1.render(tempo_str, True, (255, 255, 255))
 
     if mapaAtual == 4:
+        questao_respondidas = num_questionario  # alterado
         janela.blit(mapa_info, (0, 0))
         text_nivel = fonte1.render("Nível jogador: " + str(nivel_jogador), True, (255, 255, 255))
         janela.blit(text_nivel, (350, 130))
@@ -1021,7 +1032,7 @@ while janela_aberta:
         janela.blit(nivel_conteudo_txt, (350, 270))
         questoes_respondidas_txt = fonte1.render("Questões respondidas: " + str(questoes_respondidas), True, (255, 255, 255))
         janela.blit(questoes_respondidas_txt, (350, 340))
-        provas_feitas_txt = fonte1.render("Questões respondidas: " + str(questoes_respondidas), True, (255, 255, 255))
+        provas_feitas_txt = fonte1.render("Provas feitas: " + str(questoes_respondidas), True, (255, 255, 255)) #verificar - alterado
         janela.blit(provas_feitas_txt, (350, 410))
         janela.blit(relogio, (350, 480))
 
@@ -1044,6 +1055,7 @@ while janela_aberta:
                 questoes_corretas_total += 1
 
 
+    nivel_conteudo = num_questionario #alterado
 
     if mapaAtual == 5:
         janela.blit(labirinto, (0,0))
