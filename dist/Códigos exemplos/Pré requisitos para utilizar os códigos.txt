@@ -1,0 +1,17 @@
+1º Deve ser instalado o python em seu sistema operacional, windows ou linux:
+
+Para Windows utilize o passo a passo em : https://python.org.br/instalacao-windows/
+
+Para Linux utilize o passo a passso em: https://python.org.br/instalacao-linux/
+
+
+
+2º Deve ser instalado a biblioteca OpenCV:
+
+Para Windows siga: https://docs.opencv.org/master/d5/de5/tutorial_py_setup_in_windows.html
+
+Para Ubuntu siga:https://docs.opencv.org/master/d2/de6/tutorial_py_setup_in_ubuntu.html
+
+
+
+

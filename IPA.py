@@ -30,6 +30,8 @@ questoes_respondidas = 0
 questoes_corretas_total = 0
 questoes_corretas_atual = 0
 provas_feitas = 0
+medalhas = 0
+trofeus = 0
 capa_ipa = pygame.image.load('graphics/capa-ipa.PNG')
 instructions_box = pygame.image.load('graphics/instructions_box.PNG')
 mapa1 = pygame.image.load('graphics/mapa_1.PNG')
@@ -136,33 +138,21 @@ questao10 = pygame.image.load('graphics/questao10.PNG')
 questao11 = pygame.image.load('graphics/questao11.PNG')
 questao12 = pygame.image.load('graphics/questao12.PNG')
 questao13 = pygame.image.load('graphics/questao13.PNG')
-questao14 = pygame.image.load('graphics/questao6.PNG')
-questao15 = pygame.image.load('graphics/questao7.PNG')
-questao16 = pygame.image.load('graphics/questao8.PNG')
-questao17 = pygame.image.load('graphics/questao1.PNG')
-questao18 = pygame.image.load('graphics/questao2.PNG')
-questao19 = pygame.image.load('graphics/questao3.PNG')
-questao20 = pygame.image.load('graphics/questao4.PNG')
-questao21 = pygame.image.load('graphics/questao5.PNG')
-questao22 = pygame.image.load('graphics/questao6.PNG')
-questao23 = pygame.image.load('graphics/questao7.PNG')
-questao24 = pygame.image.load('graphics/questao8.PNG')
-questao25 = pygame.image.load('graphics/questao1.PNG')
-questao26 = pygame.image.load('graphics/questao2.PNG')
-questao27 = pygame.image.load('graphics/questao3.PNG')
-questao28 = pygame.image.load('graphics/questao4.PNG')
-questao29 = pygame.image.load('graphics/questao5.PNG')
-questao30 = pygame.image.load('graphics/questao6.PNG')
-questao31 = pygame.image.load('graphics/questao7.PNG')
-questao32 = pygame.image.load('graphics/questao8.PNG')
-questao33 = pygame.image.load('graphics/questao1.PNG')
-questao34= pygame.image.load('graphics/questao2.PNG')
-questao35 = pygame.image.load('graphics/questao3.PNG')
-questao36 = pygame.image.load('graphics/questao4.PNG')
-questao37 = pygame.image.load('graphics/questao5.PNG')
-questao38 = pygame.image.load('graphics/questao6.PNG')
-questao39 = pygame.image.load('graphics/questao7.PNG')
-questao40 = pygame.image.load('graphics/questao8.PNG')
+questao14 = pygame.image.load('graphics/questao14.PNG')
+questao15 = pygame.image.load('graphics/questao15.PNG')
+questao16 = pygame.image.load('graphics/questao16.PNG')
+questao17 = pygame.image.load('graphics/questao17.PNG')
+questao18 = pygame.image.load('graphics/questao18.PNG')
+questao19 = pygame.image.load('graphics/questao19.PNG')
+questao20 = pygame.image.load('graphics/questao20.PNG')
+questao21 = pygame.image.load('graphics/questao21.PNG')
+questao22 = pygame.image.load('graphics/questao22.PNG')
+questao23 = pygame.image.load('graphics/questao23.PNG')
+questao24 = pygame.image.load('graphics/questao24.PNG')
+questao25 = pygame.image.load('graphics/questao25.PNG')
+questao26 = pygame.image.load('graphics/questao26.PNG')
+questao27 = pygame.image.load('graphics/questao27.PNG')
+questao28 = pygame.image.load('graphics/questao28.PNG')
 feedback_1_1 = pygame.image.load('graphics/feedback_1-1.PNG')
 feedback_2_1 = pygame.image.load('graphics/feedback_2-1.PNG')
 feedback_2_2 = pygame.image.load('graphics/feedback_2-2.PNG')
@@ -176,6 +166,11 @@ feedback_4_3 = pygame.image.load('graphics/feedback_4-3.PNG')
 feedback_5_1 = pygame.image.load('graphics/feedback_5-1.PNG')
 feedback_5_2 = pygame.image.load('graphics/feedback_5-2.PNG')
 feedback_5_3 = pygame.image.load('graphics/feedback_5-3.PNG')
+final1 = pygame.image.load('graphics/final1.PNG')
+final2 = pygame.image.load('graphics/final2.PNG')
+final3 = pygame.image.load('graphics/final3.PNG')
+final4 = pygame.image.load('graphics/final4.PNG')
+
 tipo_alternativa = 1
 
 valor_progresso = 0
@@ -194,22 +189,22 @@ pygame.display.set_caption("IPA - Image Processing Adventure")
 janela.blit(capa_ipa, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(4000) #original 4000
+pygame.time.delay(0) #original 4000
 
 janela.blit(instructions_box, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(4000)#original 4000
+pygame.time.delay(0)#original 4000
 
 janela.blit(mapa1, (0,0))
 janela.blit(player_infobox, (150,50))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(8000)#8000
+pygame.time.delay(0)#8000
 
 mapa_att = mapa1
 respostas = ["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x"]
-respostas_corretas = ['b','c','b','d','c','b','d','d','a','c','d','b','a','c','d','b','c','a','b','a','b','a','d','a','b','c','a','d','d','c']
+respostas_corretas = ['b','c','b','d','c','b','d','d','a','c','d','b','a','d','d','b','a','c','c','a','a','a','c','a','c','b','d','c']
 
 
 
@@ -486,11 +481,16 @@ while janela_aberta:
                             feed_num = 14
                             feedback_status = "off"
                             questionario_status = "off"
-                            status_tela_pc = "off"
+                            status_tela_pc = "on"
 
 
-                if num_pag > 55:
+                if num_pag > 59:
                     modo_select = 2
+                    if x == 120 and y == 40 and mapaAtual == 5:
+                        x = 120
+                        y = 40
+                        mapaAtual == 5
+
                     status_tela_pc = "off"
                     num_pag = 1
 
@@ -533,7 +533,7 @@ while janela_aberta:
         mapa_att = mapa2
         mapaAtual = 2
         x = 320
-        y = 50
+        y = 500
     if x == 320 and y == 550 and mapaAtual == 6:
         mapa_att = mapa1
         mapaAtual = 2
@@ -577,7 +577,7 @@ while janela_aberta:
             text_progresso = fonte1.render("Progresso: " + str(round((100 / 55) * valor_progresso)) + "%", True,
                                            (255, 165, 0))
             # alterado
-        if tamanho_progresso > 476:
+        if tamanho_progresso >= 476:
             tamanho_progresso = int(round(((476 / 55) * 55), 0))
             text_progresso = fonte1.render("Progresso: " + str(round((100 / 55) * 55)) + "%", True,
                                            (255, 165, 0))
@@ -691,6 +691,7 @@ while janela_aberta:
                     tela_pc = pagina24
 
                 if num_pag == 26:
+                    quest_num = 16
                     questionario_status = "on"
                     feedback_status = "off"
                     conteudo_status = "off"
@@ -755,6 +756,7 @@ while janela_aberta:
                     tela_pc = pagina41
 
                 if num_pag == 45:
+                    quest_num = 22
                     questionario_status = "on"
                     feedback_status = "off"
                     conteudo_status = "off"
@@ -794,10 +796,22 @@ while janela_aberta:
                     tela_pc = pagina49
 
                 if num_pag == 55:
-                    questionario_status = "off"
+                    quest_num = 28
+                    questionario_status = "on"
                     feedback_status = "off"
                     conteudo_status = "off"
                     modo_select = 2
+                if num_pag == 56:
+                    tela_pc = final1
+                if num_pag == 57:
+                    tela_pc = final2
+                if num_pag == 58:
+                    tela_pc = final3
+                if num_pag == 59:
+                    tela_pc = final4
+                    tamanho_progresso = 476
+
+
 
             if item_select == 1:
                 resposta = "a"
@@ -836,9 +850,14 @@ while janela_aberta:
                     tela_pc = feedback_5_2
                 if feed_num == 13:
                     tela_pc = feedback_5_3
-                    questionario_status = "on"
-                    feedback_status = "on"
-                    conteudo_status = "off"
+                    conteudo_status = "on"
+                    num_pag = 56
+                if feed_num == 14:
+                    num_pag = 56
+                    questionario_status = "off"
+                    feedback_status = "off"
+                    conteudo_status = "on"
+
 
 
 
@@ -849,35 +868,43 @@ while janela_aberta:
                     respostas[0] = resposta
 
                 elif quest_num == 2:
+                    questoes_respondidas = 1
                     tela_pc = questao2
                     tipo_alternativa = 2
                     respostas[1] = resposta
                 elif quest_num == 3:
+                    questoes_respondidas = 2
                     tela_pc = questao3
                     tipo_alternativa = 1
                     respostas[2] = resposta
                 elif quest_num == 4:
+                    questoes_respondidas = 3
                     tela_pc = questao4
                     tipo_alternativa = 2
                     respostas[3] = resposta
 
                 elif quest_num == 5:
+                    questoes_respondidas = 4
                     tela_pc = questao5
                     tipo_alternativa = 1
                     respostas[4] = resposta
                 elif quest_num == 6:
+                    questoes_respondidas = 5
                     tela_pc = questao6
                     tipo_alternativa = 1
                     respostas[5] = resposta
                 elif quest_num == 7:
+                    questoes_respondidas = 6
                     tela_pc = questao7
                     tipo_alternativa = 1
                     respostas[6] = resposta
                 elif quest_num == 8:
+                    questoes_respondidas = 7
                     tela_pc = questao8
                     tipo_alternativa = 1
                     respostas[7] = resposta
                 elif quest_num == 9:
+                    questoes_respondidas = 8
                     quest_num = 10
                     tela_pc = feedback_1_1
                     questionario_status = "off"
@@ -888,22 +915,27 @@ while janela_aberta:
                     tipo_alternativa = 2
                     respostas[8] = resposta
                 elif quest_num == 11:
+                    questoes_respondidas = 9
                     tela_pc = questao10
                     tipo_alternativa = 1
                     respostas[9] = resposta
                 elif quest_num == 12:
+                    questoes_respondidas = 10
                     tela_pc = questao11
                     tipo_alternativa = 1
                     respostas[10] = resposta
                 elif quest_num == 13:
+                    questoes_respondidas = 11
                     tela_pc = questao12
                     tipo_alternativa = 1
                     respostas[11] = resposta
                 elif quest_num == 14:
+                    questoes_respondidas = 12
                     tela_pc = questao13
                     tipo_alternativa = 1
                     respostas[12] = resposta
                 elif quest_num == 15:
+                    questoes_respondidas = 13
                     feed_num = 2
                     tela_pc = feedback_2_1
                     questionario_status = "off"
@@ -911,32 +943,109 @@ while janela_aberta:
                     conteudo_status = "off"
 
                 elif quest_num == 16:
-                    tela_pc = questao1
+                    tela_pc = questao14
                     tipo_alternativa = 1
-                    respostas[0] = resposta
+                    respostas[13] = resposta
 
                 elif quest_num == 17:
-                    tela_pc = questao2
-                    tipo_alternativa = 2
-                    respostas[1] = resposta
+                    questoes_respondidas = 14
+                    tela_pc = questao15
+                    tipo_alternativa = 1
+                    respostas[14] = resposta
 
                 elif quest_num == 18:
-                    tela_pc = questao3
+                    questoes_respondidas = 15
+                    tela_pc = questao16
                     tipo_alternativa = 1
-                    respostas[2] = resposta
+                    respostas[15] = resposta
 
                 elif quest_num == 19:
-                    tela_pc = questao4
-                    tipo_alternativa = 2
-                    respostas[3] = resposta
+                    questoes_respondidas = 16
+                    tela_pc = questao17
+                    tipo_alternativa = 1
+                    respostas[16] = resposta
 
                 elif quest_num == 20:
-                    tela_pc = questao5
+                    questoes_respondidas = 17
+                    tela_pc = questao18
                     tipo_alternativa = 1
-                    respostas[4] = resposta
+                    respostas[18] = resposta
 
                 elif quest_num == 21:
+                    questoes_respondidas = 18
                     tela_pc = feedback_3_1
+                    questionario_status = "off"
+                    feedback_status = "on"
+                    conteudo_status = "off"
+
+                elif quest_num == 22:
+                    tela_pc = questao19
+                    tipo_alternativa = 2
+                    respostas[18] = resposta
+
+                elif quest_num == 23:
+                    questoes_respondidas = 19
+                    tela_pc = questao20
+                    tipo_alternativa = 1
+                    respostas[19] = resposta
+
+                elif quest_num == 24:
+                    questoes_respondidas = 20
+                    tela_pc = questao21
+                    tipo_alternativa = 2
+                    respostas[20] = resposta
+
+                elif quest_num == 25:
+                    questoes_respondidas = 21
+                    tela_pc = questao22
+                    tipo_alternativa = 1
+                    respostas[21] = resposta
+
+                elif quest_num == 26:
+                    questoes_respondidas = 22
+                    tela_pc = questao23
+                    tipo_alternativa = 2
+                    respostas[22] = resposta
+
+                elif quest_num == 27:
+                    questoes_respondidas = 23
+                    tela_pc = feedback_4_1
+                    questionario_status = "off"
+                    feedback_status = "on"
+                    conteudo_status = "off"
+
+                elif quest_num == 28:
+                    tela_pc = questao24
+                    tipo_alternativa = 2
+                    respostas[23] = resposta
+
+                elif quest_num == 29:
+                    questoes_respondidas = 24
+                    tela_pc = questao25
+                    tipo_alternativa = 1
+                    respostas[24] = resposta
+
+                elif quest_num == 30:
+                    questoes_respondidas = 25
+                    tela_pc = questao26
+                    tipo_alternativa = 2
+                    respostas[25] = resposta
+
+                elif quest_num == 31:
+                    questoes_respondidas = 26
+                    tela_pc = questao27
+                    tipo_alternativa = 2
+                    respostas[26] = resposta
+
+                elif quest_num == 32:
+                    questoes_respondidas = 27
+                    tela_pc = questao28
+                    tipo_alternativa = 2
+                    respostas[27] = resposta
+
+                elif quest_num == 33:
+                    questoes_respondidas = 28
+                    tela_pc = feedback_5_1
                     questionario_status = "off"
                     feedback_status = "on"
                     conteudo_status = "off"
@@ -1034,7 +1143,15 @@ while janela_aberta:
         janela.blit(questoes_respondidas_txt, (350, 340))
         provas_feitas_txt = fonte1.render("Provas feitas: " + str(questoes_respondidas), True, (255, 255, 255)) #verificar - alterado
         janela.blit(provas_feitas_txt, (350, 410))
+        provas_feitas_txt = fonte1.render(str(medalhas), True, (0, 0, 0))  # verificar - alterado
+        janela.blit(provas_feitas_txt, (190, 255))
+        provas_feitas_txt = fonte1.render(str(trofeus), True, (0, 0, 0))  # verificar - alterado
+        janela.blit(provas_feitas_txt, (170, 297))
+
+        provas_feitas_txt = fonte1.render(str(exp_total), True, (0, 0, 0))  # verificar - alterado
+        janela.blit(provas_feitas_txt, (150, 340))
         janela.blit(relogio, (350, 480))
+
 
     if num_questionario == 1:
         questoes_corretas_atual = 0
@@ -1043,6 +1160,9 @@ while janela_aberta:
             if respostas_corretas[i] == respostas[i]:
                 questoes_corretas_atual += 1
                 questoes_corretas_total += 1
+
+        if questoes_corretas_atual == 8:
+            medalhas = 1
 
 
     if num_questionario == 2:
@@ -1053,6 +1173,41 @@ while janela_aberta:
             if respostas_corretas[i] == respostas[i]:
                 questoes_corretas_atual += 1
                 questoes_corretas_total += 1
+            if questoes_corretas_atual == 5:
+                medalhas +=1
+
+    if num_questionario == 3:
+
+        questoes_corretas_atual = 0
+
+        for i in range(13,18):
+            if respostas_corretas[i] == respostas[i]:
+                questoes_corretas_atual += 1
+                questoes_corretas_total += 1
+            if questoes_corretas_atual == 5:
+                medalhas +=1
+    if num_questionario == 4:
+
+        questoes_corretas_atual = 0
+
+        for i in range(18,23):
+            if respostas_corretas[i] == respostas[i]:
+                questoes_corretas_atual += 1
+                questoes_corretas_total += 1
+            if questoes_corretas_atual == 5:
+                medalhas +=1
+
+    if num_questionario == 5:
+
+        questoes_corretas_atual = 0
+
+        for i in range(23,27):
+            if respostas_corretas[i] == respostas[i]:
+                questoes_corretas_atual += 1
+                questoes_corretas_total += 1
+
+            if questoes_corretas_atual == 5:
+                medalhas +=1
 
 
     nivel_conteudo = num_questionario #alterado
