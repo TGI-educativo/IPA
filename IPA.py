@@ -189,18 +189,18 @@ pygame.display.set_caption("IPA - Image Processing Adventure")
 janela.blit(capa_ipa, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(0) #original 4000
+pygame.time.delay(4000) #original 4000
 
 janela.blit(instructions_box, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(0)#original 4000
+pygame.time.delay(4000)#original 4000
 
 janela.blit(mapa1, (0,0))
 janela.blit(player_infobox, (150,50))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(0)#8000
+pygame.time.delay(8000)#8000
 
 mapa_att = mapa1
 respostas = ["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x"]
