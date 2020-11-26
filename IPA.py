@@ -170,6 +170,8 @@ final1 = pygame.image.load('graphics/final1.PNG')
 final2 = pygame.image.load('graphics/final2.PNG')
 final3 = pygame.image.load('graphics/final3.PNG')
 final4 = pygame.image.load('graphics/final4.PNG')
+dialoguebox = pygame.image.load('graphics/dialoguebox.PNG')
+dialogo_status = False
 
 tipo_alternativa = 1
 
@@ -189,22 +191,37 @@ pygame.display.set_caption("IPA - Image Processing Adventure")
 janela.blit(capa_ipa, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(4000) #original 4000
+pygame.time.delay(0) #original 4000
 
 janela.blit(instructions_box, (0,0))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(4000)#original 4000
+pygame.time.delay(0)#original 4000
 
 janela.blit(mapa1, (0,0))
 janela.blit(player_infobox, (150,50))
 modo_tela += 1
 pygame.display.update()
-pygame.time.delay(8000)#8000
+pygame.time.delay(0)#8000
 
 mapa_att = mapa1
 respostas = ["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x"]
 respostas_corretas = ['b','c','b','d','c','b','d','d','a','c','d','b','a','d','d','b','a','c','c','a','a','a','c','a','c','b','d','c']
+
+
+
+def openCloseDialog(x, y, mapaAtual): #ativo pelo espaço, quando estiver no mapa, que tenha essa opção
+    if mapaAtual == 2: #posições apenas no mapa 2
+        #if (x == 300 or x == 500) and y == 200: opção para caso a posição dos dialogos sejam da mesma altura
+            #return True                         mudando apenas o quão pra direita está ou nao (por exemplo os soldados)
+            # podendo apenas alterar, invertendo os x's pelo y, no caso de estar na mesma posição horizontal
+            # mas a altura que muda
+
+
+        if x == 300 and y == 300: #posição do personagem no mapa 2 quando precionado espaço
+            return True
+        elif x == 400 and y == 500: #posição do personagem no mapa 2 quando precionado espaço
+            return True
 
 
 
@@ -352,6 +369,9 @@ while janela_aberta:
     comandos = pygame.key.get_pressed()
 
     if mapaAtual != 3:
+        if mapaAtual == 2:
+            if comandos[pygame.K_SPACE]:
+                dialogo_status = openCloseDialog(x,y, mapaAtual)
         if comandos[pygame.K_UP]:
             direcao = "cima"
             personagem = personagem_up2
@@ -386,6 +406,7 @@ while janela_aberta:
 
 
     else:
+
         personagem = pygame.transform.scale(personagem_left2, [400, 200])
         if comandos[pygame.K_UP]:
             direcao = "cima"
@@ -501,6 +522,8 @@ while janela_aberta:
             select_y = 440
             item_select = 1
             modo_select = 1
+
+
 
 
 
@@ -1220,11 +1243,11 @@ while janela_aberta:
     if mapaAtual!= 4 and status_tela_pc == "off":
         janela.blit(personagem, (x, y))
         #janela.blit(personagem, (320,30)) #personagem exemplo posição
+    if dialogo_status:
+        janela.blit(dialoguebox, (0,0))
 
-
-
-    #posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y) + "pagina atual:" + str(feed_num)), True, (255, 255, 255)) #posição do personagem
-    #janela.blit(posicao_real, (10,10))
+    posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y)), True, (255, 255, 255)) #posição do personagem
+    janela.blit(posicao_real, (10,10))
 
     #pygame.draw.circle(janela, (0,255,0), (100,380),10)
 
