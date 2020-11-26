@@ -371,7 +371,7 @@ while janela_aberta:
     if mapaAtual != 3:
         if mapaAtual == 2:
             if comandos[pygame.K_SPACE]:
-                dialogo_status = openCloseDialog(x,y, mapaAtual)
+                dialogo_status = openCloseDialog(x,y, mapaAtual) #openCloseDialog
         if comandos[pygame.K_UP]:
             direcao = "cima"
             personagem = personagem_up2
@@ -1243,8 +1243,12 @@ while janela_aberta:
     if mapaAtual!= 4 and status_tela_pc == "off":
         janela.blit(personagem, (x, y))
         #janela.blit(personagem, (320,30)) #personagem exemplo posição
-    if dialogo_status:
-        janela.blit(dialoguebox, (0,0))
+
+
+    if dialogo_status:#openCloseDialog  status True ou False
+        janela.blit(dialoguebox, (0,0)) #imagem do dialog
+
+        
 
     posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y)), True, (255, 255, 255)) #posição do personagem
     janela.blit(posicao_real, (10,10))
