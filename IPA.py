@@ -209,7 +209,7 @@ respostas = ["x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x","x"
 respostas_corretas = ['b','c','b','d','c','b','d','d','a','c','d','b','a','d','d','b','a','c','c','a','a','a','c','a','c','b','d','c']
 
 
-
+#openCloseDialog
 def openCloseDialog(x, y, mapaAtual): #ativo pelo espaço, quando estiver no mapa, que tenha essa opção
     if mapaAtual == 2: #posições apenas no mapa 2
         #if (x == 300 or x == 500) and y == 200: opção para caso a posição dos dialogos sejam da mesma altura
@@ -1248,7 +1248,7 @@ while janela_aberta:
     if dialogo_status:#openCloseDialog  status True ou False
         janela.blit(dialoguebox, (0,0)) #imagem do dialog
 
-        
+
 
     posicao_real = fonte1.render(("x: " + str(x) +" y: "+str(y)), True, (255, 255, 255)) #posição do personagem
     janela.blit(posicao_real, (10,10))
